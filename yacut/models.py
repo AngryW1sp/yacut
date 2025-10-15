@@ -1,4 +1,4 @@
-from datetime import datetime  # noqa: F401
+from sqlalchemy.sql import func
 from . import db
 
 
@@ -10,4 +10,4 @@ class URLMap(db.Model):
     short = db.Column(db.String(16), unique=True,
                       nullable=False, index=True)
     created_at = db.Column(
-        db.DateTime, default=datetime.utcnow, nullable=False, index=True)
+        db.DateTime, default=func.now(), nullable=False, index=True)
