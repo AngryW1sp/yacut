@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <section class="container my-5 px-4">
+      <h1 class="text-center"><span style="color:red">Ya</span>Cut</h1>
+      <p class="text-center my-4">
+        Загрузите файл и получите на них короткие ссылки
+      </p>
+      <div class="container">
+        <div class="row my-3">
+          <div class="col-sm"></div>
+          <div class="col-sm">
+            <form method="POST" enctype="multipart/form-data">
+              {{ form.hidden_tag() }}
+              <div class="form-group mb-3">
+                {{ form.files(class="form-control", placeholder="Выберите файл") }}
+                {% for error in form.files.errors %}
+                  <span style="color:red">{{ error }}</span>
+                {% endfor %}
+              </div>
+              <input type="submit" class="btn btn-primary mt-3" value="Загрузить">
+            </form>
+            
+          </div>
+          <div class="col-sm"></div>
+        </div>
+      </div>
+      {% if uploaded %}
+          <div class="row my-3 justify-content-center">
+            <div class="col-md-5">
+              <div class="card">
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    {% for name, link in uploaded.items() %}
+                      <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-light text-truncate" style="max-width: 200px;">{{ name }}</span>
+                        <a href="{{ link }}" target="_blank">{{ link }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}

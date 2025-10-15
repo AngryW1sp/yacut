@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 
+from . import app
 import pytest
 from dotenv import load_dotenv
 
@@ -15,7 +16,7 @@ _tmp_db_uri = 'sqlite:///:memory:'
 os.environ['DATABASE_URI'] = _tmp_db_uri
 
 try:
-    from yacut import app, db
+    from yacut import db
     from yacut.models import URLMap  # noqa
 except NameError as exc:
     raise AssertionError(

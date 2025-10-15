@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="img/fav/fav.ico" type="image">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="icon" href="{{ url_for('static', filename='img/fav/fav.ico') }}" type="image">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='img/fav/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/fav/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/fav/favicon-16x16.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <title>YaCut - укоротитель ссылок</title>
 </head>
 
@@ -46,21 +46,23 @@
           <div class="col-sm">
           </div>
           <div class="col-sm">
-            <form>
-              <div>
-                <div>
-                  <input type="text" class="form-control form-control-lg py-2 mb-3" id="form-title" name=""
-                    placeholder="Длинная ссылка">
-                  <p><span style="color:red">Текст возможной ошибки</span></p>
-                </div>
-                <div>
-                  <input type="url" class="form-control form-control-lg py-2 mb-3" id="form-link" name=""
-                    placeholder="Ваш вариант короткой ссылки">
-                  <p><span style="color:red">Текст возможной ошибки</span></p>
-                </div>
-
-                <input type="submit" class="btn btn-primary" value="Создать">
+            <form method="POST">
+              {{ form.hidden_tag() }}
+              <div class="form-group">
+                {{ form.original_link.label() }}
+                {{ form.original_link(class="form-control", placeholder="Длинная ссылка") }}
+                {% for error in form.original_link.errors %}
+                  <span style="color:red">{{ error }}</span>
+                {% endfor %}
               </div>
+              <div class="form-group">
+                {{ form.custom_id.label() }}
+                {{ form.custom_id(class="form-control", placeholder="Ваш вариант короткой ссылки (опционально)") }}
+                {% for error in form.custom_id.errors %}
+                  <span style="color:red">{{ error }}</span>
+                {% endfor %}
+              </div>
+              <input type="submit" class="btn btn-primary" value="Создать">
             </form>
           </div>
           <div class="col-sm">

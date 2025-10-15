@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center text-success mb-4">Готово!</h2>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Исходная ссылка</h5>
+          <p class="card-text">{{ urlmap.original }}</p>
+          <hr>
+          <h5 class="card-title">Короткая ссылка</h5>
+          <p class="card-text">
+            <p class="card-text">{{ urlmap.short }}</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
