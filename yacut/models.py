@@ -1,5 +1,5 @@
-from sqlalchemy.sql import func
 from . import db
+from sqlalchemy.sql import func
 
 
 class URLMap(db.Model):

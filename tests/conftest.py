@@ -2,7 +2,7 @@ import os
 import sys
 from pathlib import Path
 
-from . import app
+from yacut import app
 import pytest
 from dotenv import load_dotenv
 
