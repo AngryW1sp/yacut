@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from settings import BaseConfig
 from yacut import app, db
-from models import URLMap
+from yacut.models import URLMap
 from yacut.utils import get_unique_short_id, is_valid_url
 
 MAIN_URL = BaseConfig.BASE_URL
