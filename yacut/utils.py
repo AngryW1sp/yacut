@@ -6,7 +6,7 @@ from urllib.parse import unquote, urlparse
 
 from aiohttp import FormData
 from settings import BaseConfig
-from yacut.models import URLMap
+from models import URLMap
 
 MAIN_URL = BaseConfig.BASE_URL
 REQUEST_UPLOAD_URL = BaseConfig.REQUEST_UPLOAD_URL

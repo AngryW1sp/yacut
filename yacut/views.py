@@ -1,7 +1,7 @@
 from flask import abort, flash, redirect, render_template
 from settings import BaseConfig
 from yacut.forms import URLFileForm, URLMapForm
-from yacut.models import URLMap
+from models import URLMap
 from yacut import app, db
 from yacut.utils import get_unique_short_id, async_upload_to_yandex
 
